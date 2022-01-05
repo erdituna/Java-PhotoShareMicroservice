@@ -42,12 +42,7 @@ public class AccountTypesController {
 	}
 	@PostMapping
 	public String createAccountType( @RequestBody CreateAccountTypeRestModel createAccountTypeRestModel) {
-		
-		
-		//rental ms asyrı bir controller yaz paket ıcıne koy rentalsqrs isminde event fırlat createrentalcommend rentalcreateevent fırlatın
-		
-		//rest model command cevir 
-		//axon  cqrs bus ile yaşam döngüsüne sok
+
 		
 		 CreateAccountTypeCommand command=  CreateAccountTypeCommand.builder()
 		.price(createAccountTypeRestModel.getPrice())
@@ -55,9 +50,7 @@ public class AccountTypesController {
 		.description(createAccountTypeRestModel.getDescription())
 		.accountTypeId(UUID.randomUUID().toString())
 		.build();
-		 
-		 //BTK c# - mufredat dan 94.bolum c# ve java gelıstırıcılerı clean code ızle yararını gorursun
-		 //36.7 builder deseni 
+		
 		 
 		 String returnValue =this.commandGateway.sendAndWait(command);
 		 //Find command handler and run it 
